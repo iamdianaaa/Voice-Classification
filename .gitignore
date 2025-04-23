@@ -1,1 +1,24 @@
+# Ignore raw data (Common Voice, etc.)
 data/raw/
+
+# Ignore processed NumPy arrays (can be regenerated)
+data/processed/*.npy
+
+# Ignore Jupyter notebook checkpoints
+**/.ipynb_checkpoints/
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ignore virtual environments (if ever used locally)
+venv/
+.env/
+
+# Ignore VS Code project settings
+.vscode/
+
+# Ignore Docker system files
+*.pid
+*.log
