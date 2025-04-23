@@ -1,6 +1,8 @@
 # Ignore raw data (Common Voice, etc.)
 data/raw/
 
+.DS_Store
+
 # Ignore processed NumPy arrays (can be regenerated)
 data/processed/*.npy
 
