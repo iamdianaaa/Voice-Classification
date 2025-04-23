@@ -3,6 +3,13 @@
 This project is part of the CS251/CS340 Machine Learning course at the American University of Armenia.  
 We aim to build a machine learning pipeline that classifies speakers into age groups based on voice recordings from the [Mozilla Common Voice](https://commonvoice.mozilla.org/en/datasets) dataset.
 
+To run the project without errors:
+
+1. Download the [Common Voice - Armenian - Common Voice Corpus 21.0 | 3/19/2025](https://commonvoice.mozilla.org/en/datasets)
+2. Extract the contents and place them into: **data/raw**
+3. (Optional) You can run `docker-compose up -d` to preprocess audio and extract features using the container.
+4. Preprocessed MFCC features (if already created) will appear in: **data/processed/**
+
 ---
 
 ## 🧩 Problem Formulation
@@ -29,48 +36,21 @@ cd Voice-Classification
 
 ```bash
 docker-compose build
-docker-compose up
+docker-compose up -d
 ```
 
-This will build the environment with all required Python packages and mount your local data.
+This starts a lightweight container that shares your local data/ folder.
 
 ### 💾 Docker Volume Mounts
-The local folders are mounted into the container as:
+Your local folders are mounted into the container as:
 
-- **data/** → **/app/data/**
-- **notebooks/** → **/app/notebooks/**
+- data/ → /app/data/
+This allows the container to access and preprocess .mp3 files or save .npy feature arrays, while you work outside the container in your local Python environment.
 
-This setup ensures large datasets are never copied into the image itself, but remain accessible from inside the container.
+### 📁 Working Outside the Container
+All notebooks and scripts are edited and run in VS Code outside Docker.
 
-### 🌐 Access JupyterLab
-
-After running docker-compose up, open the following URL in your browser:
-
-```bash
-http://localhost:8888
-```
-
-You will be prompted for a token.
-
-### 🔍 Finding the Token
-
-To find your JupyterLab access token, open a new terminal and run:
-
-```bash
-docker ps
-```
-
-Copy your container name or ID, then run:
-```bash
-docker exec -it <your_container_id_or_name> jupyter server list
-```
-
-Example output:
-```bash
-Currently running servers:
-http://127.0.0.1:8888/lab?token=abc123def456... :: /app
-```
-Paste the token (**abc123def456...**) into the login screen.
+To extract features or preprocess using tools inside the container, simply keep it running in the background. You can access shared files from both environments.
 
 ### 🧪 Project Structure
 ```bash
