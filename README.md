@@ -30,28 +30,6 @@ git clone https://github.com/iamdianaaa/Voice-Classification.git
 cd Voice-Classification
 ```
 
-### 2. 🐳 Docker Setup (Recommended)
-
-### 🔧 Build and Run
-
-```bash
-docker-compose build
-docker-compose up -d
-```
-
-This starts a lightweight container that shares your local data/ folder.
-
-### 💾 Docker Volume Mounts
-Your local folders are mounted into the container as:
-
-- data/ → /app/data/
-This allows the container to access and preprocess .mp3 files or save .npy feature arrays, while you work outside the container in your local Python environment.
-
-### 📁 Working Outside the Container
-All notebooks and scripts are edited and run in VS Code outside Docker.
-
-To extract features or preprocess using tools inside the container, simply keep it running in the background. You can access shared files from both environments.
-
 ### 🧪 Project Structure
 ```bash
 .
